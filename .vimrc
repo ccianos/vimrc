@@ -54,8 +54,16 @@ set path+=**
 " Display matching files when tab completed
 set wildmenu
 
-" Modification for browsing
+" show file in titlebar
+set title
 
+" show cursor position in status bar
+set ruler
+
+" show mode in status bar (insert/replace/...)
+set showmode
+
+" Modification for browsing
 " disable banner
 let g:netrw_banner=0        
 
