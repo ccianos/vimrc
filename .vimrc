@@ -1,62 +1,35 @@
-echo      "***************"
-echo      "***************"
-echo      "**  /\\---/\\  **"
-echo      "**  {>^.^<}  **"
-echo      "**   \\ v /   **"
-echo      "**           **"
-echo      "***************"
-echo      "***************"
-!fortune
-echo "\n"
-echo "~~~~()~~~~~~~~~~~~~~~~+++++++++++++++++~~~~~~~~~~~~~~~/\~>~~"
-echo "~~~(~)~~~~~~~~~~~~~~+~#*#~#~####~#~#~ +~~~~~~~~~~~~~~~|~>~~>"
-echo "~~(~~~)~~~~~~~~~~~~+~#*#*#$$%#$~~~#*~~#+~~~~~~~~~~~~~~\/~>~>"  
-echo "~~~(~)~~~~~~~~~~~~+~#~#~#~~~$#~$*#~~#~*~+~~~~~~~~~~~~~|\~~>~"
-echo "~~~(~~~~~~~~~~~~~~~+~#~#~~~$*#~~$*#~~~~+~~~~~~~~~~~~~~~|/~>~>"
-echo "~~(~)~~~~~~~~~~~~~~~+~#~~~$**#~~$*~#~#+~~~~~~~~~~~~~~~|~>~~~"
-echo "~~(~~~~~~~~~~~~~~~~~~+~#~$~*~#~*~$~~#+~~~~~~~~~~~~~~~~\~~>~~"
-echo "~~~9~~~~~~~~~~~~~~~~~~+~#~$~~#**$~*#+~~~~~~~~~~~~~~~~~~/~~>>"
-echo "~~~)~~~~~~~~~~~~~~~~~~~+~#~$~#~$*~#+~~~~~~~~~~~~~~~~~~|\~>>>"
-echo "~~~9~~~~~~~~~~~~~~~~~~~~+~#~$#$*~#+~~~~~~~~~~~~~~~~~~~|/\~~>"
-echo "~~~)~~~~~~~~~~~~~~~~~~~~~+~#~#~~#+~~~~~~~~~~~~~~~~~~~~|~/~~>"
-echo "~~(~~~~~~~~~~~~~~~~~~~~~~~+~~#~#+~~~~~~~~~~~~~~~~~~~~~/~~~~"          
-echo "~~~)~~~~~~~~~~~~~~~~~~~~~~~+~#~+~~~~~~~~~~~~~~~~~~~~~~|~~~>"
-echo "~~6~~~~~~~~~~~~~~~~~~~~~~~~~+#+~~~~~~~~~~~~~~~~~~~~~~~|\~~>"
-echo "~~:~~~~~~~~~~~~~~~~~~~~~~~~~~+~~~~~~~~~~~~~~~~~~~~~~~~|/>>>"
-
+" vim-plug
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+ Plug 'Valloric/YouCompleteMe'
+ Plug 'junegunn/seoul256.vim'
+ Plug 'junegunn/goyo.vim'
+ Plug 'junegunn/limelight.vim'
+ Plug 'dart-lang/dart-vim-plugin'
+ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+ Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+ Plug 'natebosch/vim-lsc'
+ Plug 'cespare/vim-toml'
+ Plug 'hashivim/vim-terraform'
+ Plug 'Shougo/neocomplete.vim'
+ Plug 'tpope/vim-fireplace'
+ Plug 'guns/vim-clojure-static'
+ Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+ Plug 'wlangstroth/vim-racket'
+call plug#end()
 
 " Ensure Vi Improved is set
 set nocompatible
 
-" Enable syntax and plugins
-syntax enable
-filetype off
-
-" vim-plug
-" https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'natebosch/vim-lsc'
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
-" Plug 'Valloric/YouCompleteMe'
-call plug#end()
-
-" Map a filetype to the command that starts the language server for that
-" filetype
-"let g:lsc_server_commands = {'dart': 'dart_language_server'}
-
-" let g:ycm_keep_logfiles = 1
-" let g:ycm_log_level = 'debug'
-
+" Show typed commands
 set showcmd
 
-set runtimepath^=runtimepath=~/.vim/,~/.vim,/usr/local/Cellar/macvim/8.1-151/MacVim.app/Contents/Resources/vim/vimfiles,/usr/local/Cellar/macvim/8.1-151/MacVim.app/Contents/Resources/vim/runtime,/usr/local/Cellar/macvim/8.1-151/MacVim.app/Contents/Resources/vim/vimfiles/after
+" Enable backspace
+set bs=2
 
+" Enable syntax and plugins
+syntax enable
+filetype on
 
 " Tabs to spaces
 set tabstop=2 shiftwidth=2 expandtab
@@ -81,10 +54,6 @@ set path+=**
 " Display matching files when tab completed
 set wildmenu
 
-" Set highlighting and incomplete highlighting for search
-set hlsearch 
-set incsearch
-
 " Modification for browsing
 
 " disable banner
@@ -102,12 +71,17 @@ let g:netrw_lifestyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 
-" Read empty HTML template and move cursor to title
-"nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
+" vim-go
+let g:go_gocode_propose_source = 1
+let g:go_info_mode='gocode'
+let g:go_auto_type_info=1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+setlocal omnifunc=go#complete#Complete
+let g:ycm_keep_logfiles = 1
+let g:ycm_log_level = 'debug'
 
-
-" Use Bradley's formatter and add it to spec_helper
-" http://www.philipbradley.net/rspec-into-vim-with-quickfix/
-
-" postgresql syntax plugin -> pgsql.vim
-let g:sql_type_default = 'pgsql'
