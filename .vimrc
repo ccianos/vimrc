@@ -36,10 +36,14 @@ if dein#load_state('$HOME/.vim/bundle')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('fatih/vim-go')
+"  call dein#add('rust-lang/rust.vim')
   call dein#add('pearofducks/ansible-vim')
   call dein#add('puppetlabs/puppet-syntax-vim')
+  call dein#add('justmao945/vim-clang')
+  call dein#add('WolfgangMehner/c-support')
+  call dein#add('godlygeek/tabular')
+  call dein#add('preservim/vim-markdown')
   " You can specify revision/branch/tag.
-  "" call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
   " Required:
   call dein#end()
@@ -104,6 +108,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 """ Auto-close if NerdTree is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-clang
+let g:clang_format_auto = 1
+let g:clang_auto = 1
+let g:clang_c_completeopt = 'longest,menuone'
 
 " vim-go
 let g:go_fmt_command = "gopls"
